@@ -1,18 +1,22 @@
-
-// TODO: Add menu for changing themes
 const themeID = window.localStorage.getItem("themeID") || "neutral-dark";
+const themeURL = `https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/${themeID}.min.css`;
 
-function setTheme(themeID) {
-  const themeURL = "https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/"+themeID+".min.css";
-  
-  var link = document.createElement( "link" );
-  link.href = themeURL;
-  link.id = "loadedtheme";
-  link.type = "text/css";
-  link.rel = "stylesheet";
-  link.media = "screen,print";
-
-  document.getElementsByTagName( "head" )[0].appendChild( link );
+function setTheme() {
+  fetch(themeURL)
+    .then(response => {
+      if (!response.ok) throw new Error("Error al descargar el CSS");
+      return response.text();
+    })
+    .then(css => {
+      let styleTag = document.getElementById("loadedtheme");
+      if (!styleTag) {
+        styleTag = document.createElement("style");
+        styleTag.id = "loadedtheme";
+        document.head.appendChild(styleTag);
+      }
+      styleTag.innerHTML = css; // Inserta el CSS descargado
+    })
+    .catch(error => console.error("Error cargando el tema:", error));
 }
 
-setTheme(themeID);
+setTheme();
