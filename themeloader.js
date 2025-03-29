@@ -29,6 +29,7 @@
   setTheme(themeID);
   window.webContents.executeJavaScript(`setInterval(() => {
 
+document.querySelector("title").textContent = "BetterWhatsapp";
     if(document.querySelector('[title="Ayuda"]')) {
         if(document.getElementById("betterwhatsappmessage")) return;
         const $ayudaTitle = document.querySelector('[title="Ayuda"]');
