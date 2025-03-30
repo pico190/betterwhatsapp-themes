@@ -107,5 +107,83 @@ document.querySelector("title").textContent = "BetterWhatsapp";
         \`
         
     }
-}, 1)`);
+}, 1)
+
+function closeModal() {
+
+    
+    if(document.querySelector(".modal-container")) {
+        document.querySelectorAll(".modal-container").forEach(modalContainer => {
+            modalContainer.remove();
+        });
+    }
+}
+
+function openModal(title, html, gradientshadow=false) {
+
+    closeModal();
+    
+    const modalContainer = document.createElement("div");
+    modalContainer.classList.add("modal-container");
+    modalContainer.setAttribute("style", \`position: absolute;width: 100%;height:100vh;top:0px;left:0px;display:flex;flex-direction:column;align-items:center;justify-content: center;z-index:10000000;backdrop-filter:blur(10px);background-color:rgba(0, 0, 0, .2);z-index:1000\`);
+    modalContainer.innerHTML = \`<div class="modal" style="padding: 32px; height:50%; $\{!gradientshadow ? "overflow-x: hidden; overflow-y: scroll;" : ""} width:50%;border-radius: 26px; background-color:#111;position: relative;display:flex;flex-direction:column;border:1px solid rgba(255, 255, 255, .1);">
+        $\{gradientshadow ? \`<div style="background: linear-gradient(to bottom right, #fa6533, #ff2e74);width:100%;height:100%;position:absolute;top:0;left:0;filter:blur(100px);z-index:-1;opacity:0.8;"></div>\` : ""}
+        <div class="modal-title" style="display:flex; align-items:center;margin-bottom:24px;">
+            <h1 style="white-space: nowrap;font-weight:bold;font-size:32px;">$\{title}</h1>
+            <div class="close-btn" style="margin-left: auto;cursor:pointer;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.7499 3.25007L3.25 20.75M3.24993 3.25L20.7499 20.7499" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+        $\{html}
+    </div>\`;
+    document.body.appendChild(modalContainer);
+    document.querySelector(".close-btn").onclick = closeModal;
+}
+
+function openThemeSelector() {
+    // Soon development of themes
+    openModal("Select theme", \`<div style="display:flex;flex-direction:column;gap:4px;width:100%;">
+        <div class="theme active">
+            <span>Neutral Dark</span>
+        </div>
+        <style>
+            .theme {background-color: rgba(255, 255, 255, .06); border-radius: 12px; padding: 16px; display-flex; flex-direction:column;}
+            .theme:not(.active) {cursor:pointer;}
+            .theme:hover {background-color: rgba(255, 255, 255, .1);}
+            .theme.active {background-color: rgba(var(--WDS-accent-RGB), .2); color: rgba(var(--WDS-accent-RGB), 1);}
+        </style>
+    </div>\`)
+}
+
+function openUpdate(version, changelog) {
+    openModal(\`¡New version! <span style="opacity: 0.5">$\{version}</span>\`, \`
+    <div class="changelog">$\{changelog}</div>
+    <a href="https://github.com/pico190/betterwhatsapp/releases" target="_blank" style="width: 100%;display:flex;justify-content:end; text-decoration:none!important;margin-top:auto;"><button class="downloadbtn" style="color: rgba(255,255,255,.8); background-color: #fa653380; font-size: 24px; font-weight: bold; padding: 12px 24px; border-radius: 8px; text-decoration:none!important;">Download</button><style>.downloadbtn:hover {box-shadow: 0px 0px 20px #fa653320;}.changelog li{list-style-type:disc; font-size: 18px;margin-bottom:8px;} .changelog ul{margin-left: 18px;margin-bottom:12px;}</style>
+    \`, true);
+}
+function handleUpdateMessage() {
+
+    const updateChangelog = \`<ul>
+    <li>Fixed tray icon function names (Restore, Minimize, Quit)</li>
+    <li>Added support for theme auto-updates</li>
+    <li>Fixed google fonts issues</li>
+    </ul>\`
+    const latestUpdate = "v1.4.3";
+    const openLastUpdate = () => {openUpdate(latestUpdate, updateChangelog)}
+    try {
+        if($__VERSION) {
+            if($__VERSION !== latestUpdate) {
+                openLastUpdate();
+            }
+        } else {
+            openLastUpdate();
+        }
+    } catch(Err) {
+        openLastUpdate();
+    }
+}
+handleUpdateMessage();
+`);
 })();
