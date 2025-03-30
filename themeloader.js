@@ -61,7 +61,7 @@ function openModal(title, html, gradientshadow=false) {
     const modalContainer = document.createElement("div");
     modalContainer.classList.add("modal-container");
     modalContainer.setAttribute("style", \`position: absolute;width: 100%;height:100vh;top:0px;left:0px;display:flex;flex-direction:column;align-items:center;justify-content: center;z-index:10000000;backdrop-filter:blur(10px);background-color:rgba(0, 0, 0, .2);z-index:1000\`);
-    modalContainer.innerHTML = \`<div class="modal" style="padding: 32px; height:50%; $\{!gradientshadow ? "overflow-x: hidden; overflow-y: scroll;" : ""} width:50%;border-radius: 26px; background-color:#111;position: relative;display:flex;flex-direction:column;border:1px solid rgba(255, 255, 255, .1);">
+    modalContainer.innerHTML = \`<div class="modal" style="padding: 32px; max-height:50%; $\{!gradientshadow ? "overflow-x: hidden; overflow-y: scroll;" : ""} width:50%;border-radius: 26px; background-color:#111;position: relative;display:flex;flex-direction:column;border:1px solid rgba(255, 255, 255, .1);">
         $\{gradientshadow ? \`<div style="background: linear-gradient(to bottom right, #fa6533, #ff2e74);width:100%;height:100%;position:absolute;top:0;left:0;filter:blur(100px);z-index:-1;opacity:0.8;"></div>\` : ""}
         <div class="modal-title" style="display:flex; align-items:center;margin-bottom:24px;">
             <h1 style="white-space: nowrap;font-weight:bold;font-size:32px;">$\{title}</h1>
@@ -104,6 +104,8 @@ function handleUpdateMessage() {
     <li>Fixed tray icon function names (Restore, Minimize, Quit)</li>
     <li>Added support for theme auto-updates</li>
     <li>Fixed google fonts issues</li>
+    <li>Fixed security issues</li>
+    <li>Added <b>neutral dark</b> theme colors</li>
     </ul>\`
     const latestUpdate = "v1.4.4";
     const openLastUpdate = () => {openUpdate(latestUpdate, updateChangelog)}
