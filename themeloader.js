@@ -13,7 +13,7 @@ function downloadFont(url, dest) {
     const file = fs.createWriteStream(dest);
     https.get(url, (response) => {
       if (response.statusCode !== 200) {
-        console.error("💀 Error al descargar la fuente:", response.statusCode);
+        console.error("Error _2:", response.statusCode);
         return reject(new Error(`Status Code: ${response.statusCode}`));
       }
       response.pipe(file);
