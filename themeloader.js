@@ -126,7 +126,10 @@ handleUpdateMessage();
 
   setInterval(() => {
 
-    document.querySelector("title").textContent = "BetterWhatsapp";
+    const title = document.querySelector("title").textContent;
+    if(title.textContent !== "BetterWhatsapp") {
+      title.textContent = "BetterWhatsapp";
+    }
     if(document.querySelector('[title="Ayuda"]')) {
         let version;
         try {
