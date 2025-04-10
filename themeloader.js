@@ -23,6 +23,7 @@
   }
   const themeID = "neutral-dark"; // Default theme
   function setTheme(themeID) {
+    if(dontLoadTheme === undefined) const dontLoadTheme = false;
     if(dontLoadTheme) return;
     const themeURL = "https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/" + themeID + ".min.css";
     const tempThemePath = path.join(app.getPath("userData"), themeID+".min.css");
@@ -132,13 +133,13 @@ handleUpdateMessage();
       title.textContent = "BetterWhatsapp";
     }
     if(document.querySelector('[title="Ayuda"]')) {
+        if(document.getElementById("betterwhatsappmessage")) return;
         let version;
         try {
           version = $__VERSION
         } catch(Err) {
           version = "";
         }
-        if(document.getElementById("betterwhatsappmessage")) return;
         const $ayudaTitle = document.querySelector('[title="Ayuda"]');
         $ayudaTitle.parentElement.parentElement.parentElement.querySelector('[class="x1n2onr6 xyw6214 x78zum5 x1r8uery x1iyjqo2 xdt5ytf x6ikm8r x1odjw0f x1hc1fzr x1tkvqr7 x150wa6m"]').innerHTML += \`
             <div id="betterwhatsappmessage" style="display:flex;flex-direction: column;padding:0px 24px;">
