@@ -127,7 +127,7 @@ handleUpdateMessage();
 
   setInterval(() => {
 
-    const title = document.querySelector("title").textContent;
+    const title = document.querySelector("title");
     if(title.textContent !== "BetterWhatsapp") {
       title.textContent = "BetterWhatsapp";
     }
