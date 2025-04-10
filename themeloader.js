@@ -23,7 +23,11 @@
   }
   const themeID = "neutral-dark"; // Default theme
   function setTheme(themeID) {
-    if(dontLoadTheme === undefined) const dontLoadTheme = false;
+    try {
+      dontLoadTheme;
+    } catch(err) {
+      const dontLoadTheme = false;
+    }
     if(dontLoadTheme) return;
     const themeURL = "https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/" + themeID + ".min.css";
     const tempThemePath = path.join(app.getPath("userData"), themeID+".min.css");
