@@ -137,7 +137,21 @@ handleUpdateMessage();
     if(title.textContent !== "BetterWhatsapp") {
       title.textContent = "BetterWhatsapp";
     }
-    if(document.querySelector('[title="Ayuda"]')) {
+
+    const audioToast = document.querySelector('[class="x10l6tqk xa1v5g2 xyblb0s x78zum5 xh8yej3 x1x0gksc x1xrx4lg"],[class="x10l6tqk xa1v5g2 xyblb0s x78zum5 xh8yej3 x1x0gksc x1xrx4lg velocity-animating"]');   
+    if(!audioToast) return;
+    const pauseButton = audioToast.querySelector('button[class="x1n7h9c3 x1s1d1n7 x1orzsq4 xvijh9v x78zum5 xl56j7k x6s0dn4 xh4mkqi x5z6fxw"]');
+    if(!pauseButton) return;
+    const isPlaying = pauseButton.querySelectorAll("svg path").length === 2;
+    const audioPaused = isPlaying ? "false" : "true";
+    if(document.body.getAttribute("audio-paused")) {
+        if(document.body.getAttribute("audio-paused") !== audioPaused) {
+            document.body.setAttribute("audio-paused", audioPaused)
+        }
+    } else {
+        document.body.setAttribute("audio-paused", audioPaused)
+    }
+    if(document.querySelector('[title="Ayuda"],[title="Help"]')) {
         if(document.getElementById("betterwhatsappmessage")) return;
         let version;
         try {
