@@ -108,13 +108,11 @@ function openUpdate(version, changelog) {
 function handleUpdateMessage() {
 
     const updateChangelog = \`<ul>
-    <li>Fixed tray icon function names (Restore, Minimize, Quit)</li>
-    <li>Added support for theme auto-updates</li>
-    <li>Fixed google fonts issues</li>
-    <li>Fixed security issues</li>
-    <li>Added <b>neutral dark</b> theme colors</li>
+    <li>Added audio visualizer</li>
+    <li>Added some details & enabled new experimental whatsapp feature (color refresh)</li>
+    <li>Enabled developer tools with <code style="font-family: monospace;">Ctrl + Shift + I</code></li>
     </ul>\`
-    const latestUpdate = "v1.4.4";
+    const latestUpdate = "v1.4.5";
     const openLastUpdate = () => {openUpdate(latestUpdate, updateChangelog)}
     try {
         if($__VERSION) {
