@@ -148,7 +148,7 @@ function settingsManager() {
     if(!localStorage.getItem("betterwhatsapp_settings")) {
         localStorage.setItem("betterwhatsapp_settings", JSON.stringify(defaultSettings));
     }
-    var storageInterval = setInterval(() => {
+    setInterval(() => {
         const settings = JSON.parse(localStorage.getItem("betterwhatsapp_settings"));
         Object.keys(settings).forEach(setting => {
             const value = settings[setting];
@@ -183,7 +183,7 @@ setInterval(() => {
 
     if(document.querySelector("html").dataset.betterwhatsapp_settingsProfilepictureonbackground !== "true") return;
     function putPfpOnBg() {
-        const pfp = document.querySelector(`#main img[class="x1n2onr6 x1lliihq xh8yej3 x5yr21d x6ikm8r x10wlt62 x14yjl9h xudhj91 x18nykt9 xww2gxu xl1xv1r x115dhu7 x17vty23 x1hc1fzr x4u6w88 x1g40iwv _ao3e"]`).src;
+        const pfp = document.querySelector(\`#main img[class="x1n2onr6 x1lliihq xh8yej3 x5yr21d x6ikm8r x10wlt62 x14yjl9h xudhj91 x18nykt9 xww2gxu xl1xv1r x115dhu7 x17vty23 x1hc1fzr x4u6w88 x1g40iwv _ao3e"]\`).src;
         if(!pfp) return;
         document.querySelector("#betterwhatsapp_pfpOnBg")?.remove();
         const newImg = document.createElement("img");
