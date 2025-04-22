@@ -128,6 +128,79 @@ function handleUpdateMessage() {
 }
 handleUpdateMessage();
 
+function settingsManager() {
+
+    const defaultSettings = {
+        customTheme: true,
+        customIcons: true,
+        chatShadow: false,
+        profilePictureOnBackground: false
+    };
+    const settingsTitles = {
+        customTheme: "BetterWhatsapp custom theme.",
+        customIcons: "BetterWhatsapp custom icons.",
+        chatShadow: "Show chat list shadow gradient",
+        profilePictureOnBackground: "Show profile picture on background"
+    };
+    const onlyRefreshedWhatsappSettings = [
+        "chatShadow"
+    ];
+    if(!localStorage.getItem("betterwhatsapp_settings")) {
+        localStorage.setItem("betterwhatsapp_settings", JSON.stringify(defaultSettings));
+    }
+    var storageInterval = setInterval(() => {
+        const settings = JSON.parse(localStorage.getItem("betterwhatsapp_settings"));
+        Object.keys(settings).forEach(setting => {
+            const value = settings[setting];
+            document.querySelector("html").setAttribute("data-betterwhatsapp_settings-"+setting, value);
+        });
+    }, 1000);
+
+}
+
+settingsManager()
+
+setInterval(() => {
+    if(document.querySelector('[data-icon="wa-wordmark-refreshed"]')) {
+        document.querySelector("html").dataset.betterwhatsapp_isWhatsappRefreshed = true;
+    }
+}, 100);
+
+setInterval(() => {
+    const chatFormat = document.querySelector('[class="x78zum5 x1op4030 x1y1aw1k x1sxyh0 xwib8y2 xurb0ha xxymvpz x10l6tqk x13vifvy x17qophe xg01cxk xvh3i5d xfh8nwu xoqspk4 x12v9rci x138vmkv x19991ni x1wsgiic x1so62im x1omtkq1"]');
+    if(!chatFormat) return;
+    const position = (chatFormat.style.transform.split(")")[0].split("(")[1].split(", "));
+    const X = position[0];
+    const Y = position[1];
+
+    chatFormat.style.position = "fixed";
+    chatFormat.style.top = Y;
+    chatFormat.style.left = X;
+    chatFormat.style.transition = "all 0s, left 0.03s";
+}, 100)
+
+setInterval(() => {
+
+    if(document.querySelector("html").dataset.betterwhatsapp_settingsProfilepictureonbackground !== "true") return;
+    function putPfpOnBg() {
+        const pfp = document.querySelector(`#main img[class="x1n2onr6 x1lliihq xh8yej3 x5yr21d x6ikm8r x10wlt62 x14yjl9h xudhj91 x18nykt9 xww2gxu xl1xv1r x115dhu7 x17vty23 x1hc1fzr x4u6w88 x1g40iwv _ao3e"]`).src;
+        if(!pfp) return;
+        document.querySelector("#betterwhatsapp_pfpOnBg")?.remove();
+        const newImg = document.createElement("img");
+        newImg.id = "betterwhatsapp_pfpOnBg";
+        newImg.src = pfp;
+        newImg.style.top = "0";
+        newImg.style.left = "0";
+        newImg.style.opacity = "0.2";
+        newImg.style.filter = "blur(10px) grayscale(50%)";
+        newImg.style.width = "100%";
+        newImg.style.height = "100%";
+        newImg.style.position = "absolute";
+        document.querySelector("#main").prepend(newImg);
+    }
+    putPfpOnBg();
+}, 10);
+
 
   setInterval(() => {
 
