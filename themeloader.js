@@ -1,98 +1,256 @@
-(function () {
-    const themes = [
-      {
-        id: "neutral-dark",
-        name: "Neutral Dark"
-      }
-    ];
-  
+(function() {
+
+  const themes = [
+    {
+      id: "neutral-dark",
+      name: "Neutral Dark"
+    }
+  ]
+
+  try {
+    if(ipcMain) {
+      ipcMain.handle('handle-data', async (event, data) => {
+        console.log('Data:', data); 
+        return { response: 'Test' };
+      });
+    } 
+  } catch(Err) {
+    void(0);
+  }
+
+  function fontsLoader(window) {
+    window.webContents.insertCSS(`@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwkT9nA2.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwAT9nA2.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwgT9nA2.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwcT9nA2.woff2) format('woff2');unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwsT9nA2.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwoT9nA2.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwQT9g.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvvYwYL8g.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvmYwYL8g.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvuYwYL8g.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvhYwYL8g.woff2) format('woff2');unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvtYwYL8g.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvsYwYL8g.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcviYwY.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}`);
+  }
+  const themeID = "neutral-dark"; // Default theme
+  function setTheme(themeID) {
+    let loadTheme = true;
     try {
-      if (ipcMain) {
-        ipcMain.handle("handle-data", async (event, data) => {
-          console.log("Data:", data);
-          return { response: "Test" };
-        });
-      }
-    } catch (Err) {
+      loadTheme = dontLoadTheme;
+    } catch(err) {
       void 0;
     }
-  
-    function fontsLoader(window) {
-      window.webContents.insertCSS(
-        `@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwkT9nA2.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwAT9nA2.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwgT9nA2.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwcT9nA2.woff2) format('woff2');unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwsT9nA2.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwoT9nA2.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Inter';font-style:italic;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwQT9g.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvvYwYL8g.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvmYwYL8g.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvuYwYL8g.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvhYwYL8g.woff2) format('woff2');unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvtYwYL8g.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcvsYwYL8g.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v18/UcCo3FwrK3iLTcviYwY.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}`,
-      );
-    }
-    const themeID = "neutral-dark"; // Default theme
-    function setTheme(themeID) {
-      let loadTheme = true;
-      try {
-        loadTheme = dontLoadTheme;
-      } catch (err) {
-        void 0;
+    if(!loadTheme) return;
+    const themeURL = "https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/" + themeID + ".min.css";
+    const tempThemePath = path.join(app.getPath("userData"), themeID+".min.css");
+
+    https.get(themeURL, (response) => {
+      if (response.statusCode !== 200) {
+        console.error("Error al descargar el script:", response.statusCode);
+        return;
       }
-      if (!loadTheme) return;
-      const themeURL =
-        "https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/" +
-        themeID +
-        ".min.css";
-      const tempThemePath = path.join(
-        app.getPath("userData"),
-        themeID + ".min.css"
-      );
   
-      https
-        .get(themeURL, (response) => {
-          if (response.statusCode !== 200) {
-            console.error("Error al descargar el script:", response.statusCode);
-            return;
-          }
-  
-          let themeData = "";
-          response.on("data", (chunk) => (themeData += chunk));
-          response.on("end", () => {
-            fs.writeFileSync(tempThemePath, themeData, "utf8");
-            window.webContents.insertCSS(fs.readFileSync(tempThemePath, "utf8"));
-          });
-        })
-        .on("error", (err) => console.error("Error:", err));
+      let themeData = "";
+      response.on("data", (chunk) => (themeData += chunk));
+      response.on("end", () => {
+        fs.writeFileSync(tempThemePath, themeData, "utf8");
+        window.webContents.insertCSS(fs.readFileSync(tempThemePath, "utf8"));
+      });
+    }).on("error", (err) => console.error("Error:", err));
+  }
+
+  setTheme(themeID);
+  fontsLoader(window);
+  window.webContents.executeJavaScript(`
+function closeModal() {
+
+    
+    if(document.querySelector(".modal-container")) {
+        document.querySelectorAll(".modal-container").forEach(modalContainer => {
+            modalContainer.remove();
+        });
     }
-  
-    setTheme(themeID);
-    fontsLoader(window);
-  
-    function executeJSClient(fileName) {
-      const themeURL =
-        "https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/" +
-        fileName;
-      const tempThemePath = path.join(
-        app.getPath("userData"),
-        themeID + ".min.css"
-      );
-  
-      https
-        .get(themeURL, (response) => {
-          if (response.statusCode !== 200) {
-            console.error("Error al descargar el script:", response.statusCode);
-            return;
-          }
-  
-          let themeData = "";
-          response.on("data", (chunk) => (themeData += chunk));
-          response.on("end", () => {
-            fs.writeFileSync(tempThemePath, themeData, "utf8");
-            const version = $__VERSION;
-            window.webContents.executeJavaScript(
-              fs.readFileSync(tempThemePath, "utf8").replaceAll("$__VERSION", version)
-            );
-          });
-        })
-        .on("error", (err) => console.error("Error:", err));
+}
+
+function openModal(title, html, gradientshadow=false) {
+
+    closeModal();
+    
+    const modalContainer = document.createElement("div");
+    modalContainer.classList.add("modal-container");
+    modalContainer.setAttribute("style", \`position: absolute;width: 100%;height:100vh;top:0px;left:0px;display:flex;flex-direction:column;align-items:center;justify-content: center;z-index:10000000;backdrop-filter:blur(10px);background-color:rgba(0, 0, 0, .2);z-index:1000\`);
+    modalContainer.innerHTML = \`<div class="modal" style="padding: 32px; max-height:50%; $\{!gradientshadow ? "overflow-x: hidden; overflow-y: scroll;" : ""} width:50%;border-radius: 26px; background-color:#111;position: relative;display:flex;flex-direction:column;border:1px solid rgba(255, 255, 255, .1);">
+        $\{gradientshadow ? \`<div style="background: linear-gradient(to bottom right, #fa6533, #ff2e74);width:100%;height:100%;position:absolute;top:0;left:0;filter:blur(100px);z-index:-1;opacity:0.8;"></div>\` : ""}
+        <div class="modal-title" style="display:flex; align-items:center;margin-bottom:24px;">
+            <h1 style="white-space: nowrap;font-weight:bold;font-size:32px;">$\{title}</h1>
+            <div class="close-btn" style="margin-left: auto;cursor:pointer;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.7499 3.25007L3.25 20.75M3.24993 3.25L20.7499 20.7499" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+        $\{html}
+    </div>\`;
+    document.body.appendChild(modalContainer);
+    document.querySelector(".close-btn").onclick = closeModal;
+}
+
+function openThemeSelector() {
+    // Soon development of themes
+    openModal("Select theme", \`<div style="display:flex;flex-direction:column;gap:4px;width:100%;">
+        <div class="theme active">
+            <span>Neutral Dark</span>
+        </div>
+        <style>
+            .theme {background-color: rgba(255, 255, 255, .06); border-radius: 12px; padding: 16px; display-flex; flex-direction:column;}
+            .theme:not(.active) {cursor:pointer;}
+            .theme:hover {background-color: rgba(255, 255, 255, .1);}
+            .theme.active {background-color: rgba(var(--WDS-accent-RGB), .2); color: rgba(var(--WDS-accent-RGB), 1);}
+        </style>
+    </div>\`)
+}
+
+function openUpdate(version, changelog) {
+    openModal(\`¡New version! <span style="opacity: 0.5">$\{version}</span>\`, \`
+    <div class="changelog">$\{changelog}</div>
+    <a href="https://github.com/pico190/betterwhatsapp/releases" target="_blank" style="width: 100%;display:flex;justify-content:end; text-decoration:none!important;margin-top:auto;"><button class="downloadbtn" style="color: rgba(255,255,255,.8); background-color: #fa653380; font-size: 24px; font-weight: bold; padding: 12px 24px; border-radius: 8px; text-decoration:none!important;">Download</button><style>.downloadbtn:hover {box-shadow: 0px 0px 20px #fa653320;}.changelog li{list-style-type:disc; font-size: 18px;margin-bottom:8px;} .changelog ul{margin-left: 18px;margin-bottom:12px;}</style>
+    \`, true);
+}
+function handleUpdateMessage() {
+
+    const updateChangelog = \`<ul>
+    <li>Added audio visualizer</li>
+    <li>Added some details & enabled new experimental whatsapp feature (color refresh)</li>
+    <li>Enabled developer tools with <code style="font-family: monospace;">Ctrl + Shift + I</code></li>
+    </ul>\`
+    const latestUpdate = "v1.4.5";
+    const openLastUpdate = () => {openUpdate(latestUpdate, updateChangelog)}
+    try {
+        if($__VERSION) {
+            if($__VERSION !== latestUpdate) {
+                openLastUpdate();
+            }
+        } else {
+            openLastUpdate();
+        }
+    } catch(Err) {
+        openLastUpdate();
     }
-  
-    executeJSClient("uiTweaks.js");
-  
-    // SYNTAX HIGHLIGHTING
-    executeJSClient("prismjs.js");
-    executeJSClient("preModifier.js");
-  })();
-  
+}
+handleUpdateMessage();
+
+function settingsManager() {
+
+    const defaultSettings = {
+        customTheme: true,
+        customIcons: true,
+        chatShadow: false,
+        profilePictureOnBackground: false
+    };
+    const settingsTitles = {
+        customTheme: "BetterWhatsapp custom theme.",
+        customIcons: "BetterWhatsapp custom icons.",
+        chatShadow: "Show chat list shadow gradient",
+        profilePictureOnBackground: "Show profile picture on background"
+    };
+    const onlyRefreshedWhatsappSettings = [
+        "chatShadow"
+    ];
+    if(!localStorage.getItem("betterwhatsapp_settings")) {
+        localStorage.setItem("betterwhatsapp_settings", JSON.stringify(defaultSettings));
+    }
+    setInterval(() => {
+        const settings = JSON.parse(localStorage.getItem("betterwhatsapp_settings"));
+        Object.keys(settings).forEach(setting => {
+            const value = settings[setting];
+            document.querySelector("html").setAttribute("data-betterwhatsapp_settings-"+setting, value);
+        });
+    }, 1000);
+
+}
+
+settingsManager()
+
+setInterval(() => {
+    if(document.querySelector('[data-icon="wa-wordmark-refreshed"]')) {
+        document.querySelector("html").dataset.betterwhatsapp_isWhatsappRefreshed = true;
+    }
+}, 100);
+
+setInterval(() => {
+    const chatFormat = document.querySelector('[class="x78zum5 x1op4030 x1y1aw1k x1sxyh0 xwib8y2 xurb0ha xxymvpz x10l6tqk x13vifvy x17qophe xg01cxk xvh3i5d xfh8nwu xoqspk4 x12v9rci x138vmkv x19991ni x1wsgiic x1so62im x1omtkq1"]');
+    if(!chatFormat) return;
+    const position = (chatFormat.style.transform.split(")")[0].split("(")[1].split(", "));
+    const X = position[0];
+    const Y = position[1];
+
+    chatFormat.style.position = "fixed";
+    chatFormat.style.top = Y;
+    chatFormat.style.left = X;
+    chatFormat.style.transition = "all 0s, left 0.03s";
+}, 100)
+
+setInterval(() => {
+
+    if(document.querySelector("html").dataset.betterwhatsapp_settingsProfilepictureonbackground !== "true") return;
+    function putPfpOnBg() {
+        const pfp = document.querySelector(\`#main img[class="x1n2onr6 x1lliihq xh8yej3 x5yr21d x6ikm8r x10wlt62 x14yjl9h xudhj91 x18nykt9 xww2gxu xl1xv1r x115dhu7 x17vty23 x1hc1fzr x4u6w88 x1g40iwv _ao3e"]\`).src;
+        if(!pfp) return;
+        document.querySelector("#betterwhatsapp_pfpOnBg")?.remove();
+        const newImg = document.createElement("img");
+        newImg.id = "betterwhatsapp_pfpOnBg";
+        newImg.src = pfp;
+        newImg.style.top = "0";
+        newImg.style.left = "0";
+        newImg.style.opacity = "0.2";
+        newImg.style.filter = "blur(10px) grayscale(50%)";
+        newImg.style.width = "100%";
+        newImg.style.height = "100%";
+        newImg.style.position = "absolute";
+        document.querySelector("#main").prepend(newImg);
+    }
+    putPfpOnBg();
+}, 10);
+
+
+  setInterval(() => {
+
+    const title = document.querySelector("title");
+    if(title.textContent !== "BetterWhatsapp") {
+      title.textContent = "BetterWhatsapp";
+    }
+
+    document.body.classList.add("color-refresh");
+
+    function setAudioPaused() {
+      const audioToast = document.querySelector('[class="x10l6tqk xa1v5g2 xyblb0s x78zum5 xh8yej3 x1x0gksc x1xrx4lg"],[class="x10l6tqk xa1v5g2 xyblb0s x78zum5 xh8yej3 x1x0gksc x1xrx4lg velocity-animating"],[class="x10l6tqk xa1v5g2 x78zum5 xh8yej3 x1x0gksc x1xrx4lg xnj6ddq"], [class="x10l6tqk xa1v5g2 x78zum5 xh8yej3 x1x0gksc x1xrx4lg xnj6ddq velocity-animating"]');   
+      if(!audioToast) return;
+      const pauseButton = audioToast.querySelector('button[class="x1n7h9c3 x1s1d1n7 x1orzsq4 xvijh9v x78zum5 xl56j7k x6s0dn4 xh4mkqi x5z6fxw"]');
+      if(!pauseButton) return;
+      const isPlaying = pauseButton.querySelectorAll("svg path").length === 2;
+      const audioPaused = isPlaying ? "false" : "true";
+      if(document.body.getAttribute("audio-paused")) {
+          if(document.body.getAttribute("audio-paused") !== audioPaused) {
+              document.body.setAttribute("audio-paused", audioPaused)
+          }
+      } else {
+          document.body.setAttribute("audio-paused", audioPaused)
+      }
+    }
+    setAudioPaused();
+    
+    if(document.querySelector('[title="Ayuda"],[title="Help"]')) {
+        if(document.getElementById("betterwhatsappmessage")) return;
+        let version;
+        try {
+          version = $__VERSION
+        } catch(Err) {
+          version = "";
+        }
+        const $ayudaTitle = document.querySelector('[title="Ayuda"]');
+        $ayudaTitle.parentElement.parentElement.parentElement.querySelector('[class="x1n2onr6 xyw6214 x78zum5 x1r8uery x1iyjqo2 xdt5ytf x6ikm8r x1odjw0f x1hc1fzr x1tkvqr7 x150wa6m"]').innerHTML += \`
+            <div id="betterwhatsappmessage" style="display:flex;flex-direction: column;padding:0px 24px;">
+                <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, .2); width: 80%; margin: 12px auto; margin-bottom: 24px;">
+                <div style="display: flex;">
+                    <div style="display: flex; flex-direction: column;">
+                        <h1 style="white-space: nowrap;font-weight: bold; font-size: 18px;">BetterWhatsapp <span style="opacity: 0.5">$\{version}</span></h1>
+                        <p style="font-size: 12px; margin-top: 8px;">Created by <b style="font-weight: bold;">@pico190</b></p>
+                    </div>
+                    <svg style="margin-left: auto; transform: translateY(-10px)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" enable-background="new 0 0 1024 1024" image-rendering="optimizeSpeed"><defs><linearGradient id="b" x1="29.532" x2="29.532" y1="15.029" y2="49.05" gradientTransform="translate(.126 .666)scale(.99727)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#45ca7e"/><stop offset="1" stop-color="#309c3a"/></linearGradient><linearGradient id="a" x1="7.937" x2="7.937" y1="15.081" y2="1.852" gradientTransform="scale(3.7796)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#cdcdcd"/><stop offset="1" stop-color="#fefefe"/></linearGradient><filter id="c" width="1.208" height="1.224" x="-.104" y="-.112" color-interpolation-filters="sRGB"><feGaussianBlur stdDeviation=".827"/></filter></defs><image xlink:href="data:image/png;base64,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" width="60.882" height="62.001" x="1.559" y="2" preserveAspectRatio="none"/><rect width="56.002" height="56.002" x="4" y="3.969" fill="url(#a)" rx="13.002" ry="13.002"/><image xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAYAAABXuSs3AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA GXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAoxJREFUaIHVmdtywyAMRGXH7f9/ b5PafbEmy7Li4sQm3RkGpzVwEOImT3aOJvq9nd3Aq3XU6tuC524tB8tNIsektFHi/3XpCDhDznua IFeuspnZCvlqaSe64HtcRcHeKJ8ttzxa2YF/KV8tHg2pVosj8G1PCzwfAff0gOcVyrwMjhZeRFLQ Zik4dgDhH3v5ByQcgUPg3rBbeTGzL0jK0liOhR1YLR0tr2fa4c0q1q9Z3KEd9nvPFytbWWnaIdQ8 QXCsY7VAETj6swMj9M1yX24RdtA7wfOC65Nuo8DRIu4eDD0TyBGVRkmt+Ql8BF6DfseO622ZPQ3h YvDM6gzu1ubJeAY0t4vwuPo4tLtXBs5rtYOfDY3tO7yD4/qeuAwPEbrJVcAsNp6vYAmDAuedMTp/ nCE16s4jwXvW1rOljhfZnjFTgejlq1Uyopnl4FhgFDTyMEsGXoIeZXHPJbyyeMtt5goVedgdPgGY pZgmXg6jF0cpZFHg/0IKvOvud7JClpn++EnQLsW08YlMpVEq8sz0Eh8lzcbA8/00i8Moiyv4EQqh zfThHc/Ao+BVDCZhiVzFXx7h68iijCgvEpulUaarLc7QGOVKOBQ4x/ZGWHy1PLoVgvOtWt71ThRb 2hNyyMmJFVy9njP0fU8OnjGUQnBXuIe3wdA/9gRvjmRdJRzNGnRXCC76slBS7SgchZwZ+m6VVa0U 9Iw+hzCECmTWoDlGrvw6jNQyeHRN8qHkDmyVcq2BfU4vBfbR9xwmCkDiRTvqeLQzq08pTauYAscN wOxpbYRWFr/04xX7IwaFOEwRre0IevRzYfdeocAtAOAdVE3OnmC9mujNUg1wuKKn8tblsLW+ww29 q96378J/8rx8XGOB9VcAAAAASUVORK5CYII=" width="46" height="46" x="8.584" y="11.467" image-rendering="optimizeQuality" preserveAspectRatio="none"/><path fill="url(#b)" d="M32 13a19 19 0 0 0-19 19 19 19 0 0 0 2.284 8.995l-.035-.028c.958 2.25.888 2.863.737 4.742-.105 1.31-.46 2.647-.904 3.4-.402.681-.725 1.386-.725 1.565 0 .555 3.202.36 6.037-.366 3.152-.807 3.597-.89 5.959-.169l.073.024.301.09-.026-.02A19 19 0 0 0 32 51a19 19 0 0 0 19-19 19 19 0 0 0-19-19"/><path d="M39.107 40.32c1.428-.682 2.092-1.538 2.321-2.992.175-1.108.094-1.39-2.078-2.437-2.763-1.33-2.593-1.336-3.783.141-.74.92-1.059 1.218-1.299 1.218-2.815-.761-5.68-2.96-6.591-5.847 0-.124.3-.576.666-1.005 1.077-1.263 1.078-1.293.138-3.61-1.083-2.667-1.449-2.649-2.628-2.697-1.207-.05-1.588.141-2.352 1.182-.79 1.077-1.072 1.944-1.065 3.273.008 1.688.561 3.043 2.163 5.298 2.75 3.871 5.433 5.972 9.298 7.281 2.364.801 3.826.856 5.21.195" filter="url(#c)" opacity=".15" transform="translate(.126 .666)scale(.99727)"/><path fill="#fff" d="M39.126 40.368c1.424-.68 2.087-1.534 2.315-2.983.174-1.105.094-1.388-2.073-2.431-2.755-1.327-2.585-1.333-3.772.14-.739.918-1.056 1.215-1.296 1.215-2.807-.759-5.664-2.952-6.573-5.831 0-.123.299-.574.664-1.003 1.074-1.258 1.075-1.29.138-3.6-1.08-2.659-1.445-2.64-2.62-2.69-1.204-.049-1.585.142-2.346 1.18-.788 1.075-1.07 1.939-1.063 3.265.009 1.683.56 3.034 2.158 5.283 2.742 3.86 5.418 5.956 9.272 7.261 2.357.799 3.816.853 5.196.194"/></svg>
+                </div>
+            </div>
+        \`
+        
+    }
+}, 100);
+`);
+})();
