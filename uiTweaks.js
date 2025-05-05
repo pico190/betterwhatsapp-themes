@@ -45,7 +45,7 @@ function closeModal() {
               .theme:hover {background-color: rgba(255, 255, 255, .1);}
               .theme.active {background-color: rgba(var(--WDS-accent-RGB), .2); color: rgba(var(--WDS-accent-RGB), 1);}
           </style>
-      </div>`,
+      </div>`
     );
   }
   
@@ -56,7 +56,7 @@ function closeModal() {
       <div class="changelog">${changelog}</div>
       <a href="https://github.com/pico190/betterwhatsapp/releases" target="_blank" style="width: 100%;display:flex;justify-content:end; text-decoration:none!important;margin-top:auto;"><button class="downloadbtn" style="color: rgba(255,255,255,.8); background-color: #fa653380; font-size: 24px; font-weight: bold; padding: 12px 24px; border-radius: 8px; text-decoration:none!important;">Download</button><style>.downloadbtn:hover {box-shadow: 0px 0px 20px #fa653320;}.changelog li{list-style-type:disc; font-size: 18px;margin-bottom:8px;} .changelog ul{margin-left: 18px;margin-bottom:12px;}</style>
       `,
-      true,
+      true
     );
   }
   function handleUpdateMessage() {
@@ -88,19 +88,19 @@ function closeModal() {
       customTheme: true,
       customIcons: true,
       chatShadow: false,
-      profilePictureOnBackground: false,
+      profilePictureOnBackground: false
     };
     const settingsTitles = {
       customTheme: "BetterWhatsapp custom theme.",
       customIcons: "BetterWhatsapp custom icons.",
       chatShadow: "Show chat list shadow gradient",
-      profilePictureOnBackground: "Show profile picture on background",
+      profilePictureOnBackground: "Show profile picture on background"
     };
     const onlyRefreshedWhatsappSettings = ["chatShadow"];
     if (!localStorage.getItem("betterwhatsapp_settings")) {
       localStorage.setItem(
         "betterwhatsapp_settings",
-        JSON.stringify(defaultSettings),
+        JSON.stringify(defaultSettings)
       );
     }
     setInterval(() => {
