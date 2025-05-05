@@ -2,8 +2,8 @@
     const themes = [
       {
         id: "neutral-dark",
-        name: "Neutral Dark",
-      },
+        name: "Neutral Dark"
+      }
     ];
   
     try {
@@ -37,7 +37,7 @@
         ".min.css";
       const tempThemePath = path.join(
         app.getPath("userData"),
-        themeID + ".min.css",
+        themeID + ".min.css"
       );
   
       https
@@ -66,7 +66,7 @@
         fileName;
       const tempThemePath = path.join(
         app.getPath("userData"),
-        themeID + ".min.css",
+        themeID + ".min.css"
       );
   
       https
@@ -82,7 +82,7 @@
             fs.writeFileSync(tempThemePath, themeData, "utf8");
             const version = $__VERSION;
             window.webContents.executeJavaScript(
-              fs.readFileSync(tempThemePath, "utf8").replaceAll("$__VERSION", version),
+              fs.readFileSync(tempThemePath, "utf8").replaceAll("$__VERSION", version)
             );
           });
         })
