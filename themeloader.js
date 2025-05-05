@@ -80,8 +80,9 @@
           response.on("data", (chunk) => (themeData += chunk));
           response.on("end", () => {
             fs.writeFileSync(tempThemePath, themeData, "utf8");
+            const version = $__VERSION;
             window.webContents.executeJavaScript(
-              fs.readFileSync(tempThemePath, "utf8"),
+              fs.readFileSync(tempThemePath, "utf8").replaceAll("$__VERSION", version),
             );
           });
         })
