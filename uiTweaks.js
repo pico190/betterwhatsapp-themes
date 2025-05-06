@@ -70,8 +70,8 @@ function closeModal() {
       openUpdate(latestUpdate, updateChangelog);
     };
     try {
-      if ($__VERSION) {
-        if ($__VERSION !== latestUpdate) {
+      if ($_VERSION) {
+        if ($_VERSION !== latestUpdate) {
           openLastUpdate();
         }
       } else {
@@ -203,7 +203,7 @@ function closeModal() {
       if (document.getElementById("betterwhatsappmessage")) return;
       let version;
       try {
-        version = $__VERSION;
+        version = $_VERSION;
       } catch (Err) {
         version = "";
       }
