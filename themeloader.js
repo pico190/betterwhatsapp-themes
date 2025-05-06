@@ -69,6 +69,7 @@
               if (response.statusCode !== 200) {
                 console.error("Error al descargar el script:", response.statusCode);
                 return;
+        
               }
       
               let themeData = "";
