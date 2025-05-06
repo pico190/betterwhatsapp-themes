@@ -77,7 +77,7 @@
               response.on("end", () => {
                 fs.writeFileSync(tempThemePath, themeData, "utf8");
                 const version = $__VERSION;
-                const code = fs.readFileSync(tempThemePath, "utf8").replaceAll("$__VERSION", version);
+                const code = fs.readFileSync(tempThemePath, "utf8").replaceAll("$\__VERSION", version);
                 console.log(fileName + code);
                 window.webContents.executeJavaScript(code);
               });
