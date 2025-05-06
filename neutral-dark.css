@@ -59,6 +59,8 @@
 	--notification-e2e-background: transparent !important;
 	--border-stronger: transparent !important;
 	--conversation-panel-background: #222 !important;
+}
+*:not(.betterwhatsapp-code *) {
 	-ms-overflow-style: none !important;
 	scrollbar-width: none !important;
 }
@@ -764,7 +766,7 @@ progress {
 	width: calc(100% - calc(12px * 2)) !important
 }
 
-*::-webkit-scrollbar {
+*:not(.betterwhatsapp-code *)::-webkit-scrollbar {
 	display: none !important
 }
 
@@ -1685,34 +1687,37 @@ opacity: 0.7;
 }
 
 [class="x9f619 x12lumcd x1qrby5j xeuugli x6prxxf x1fcty0u x1fc57z9 xe7vic5 x1716072 xgde2yp x89wmna xbjl0o0 x13fuv20 xu3j5b3 x1q0q8m5 x26u7qi x178xt8z xm81vs4 xso031l xy80clv x1a2a7pz x13w7htt x78zum5 x123j3cw x1mpkggp xs9asl8 x1t2a60a x16n37ib xq8finb xod5an3 x1wiwyrm xt7dq6l x1x9wcxt x1f9vhhg xsr4h3p x1ytmua2 xkfubxc x6s0dn4 x1p0mfcu"] {
-    display: flex;
-  align-items: center;
+    display: flex!important;
+  align-items: center!important;
 }
 [class="x78zum5 x98rzlu xpvyfi4 x1fns5xo x6s0dn4 xl56j7k x14yjl9h xudhj91 x18nykt9 xww2gxu xyklrzc x1ry1tff x1w0mnb x1786zcw"],
 [class="x78zum5 x98rzlu xpvyfi4 x1fns5xo x6s0dn4 xl56j7k x14yjl9h xudhj91 x18nykt9 xww2gxu xyklrzc x1ry1tff x1w0mnb"] {
-  margin: 0px;
+  margin: 0px!important;
 }
 [class="xjb2p0i xk390pu x1ypdohk xjbqb8w x972fbf xcfux6l x1qhh985 xm0m39n x78zum5 xh8yej3 x5yr21d x6s0dn4 xl56j7k x14yjl9h xudhj91 x18nykt9 xww2gxu xlkovuz xzwifym x16j0l1c x1y1aw1k x1sxyh0 xwib8y2 xurb0ha x1ry1tff"] {
-  display: flex;
-  align-items: center;
-  padding-right: 0px;
+  display: flex!important;
+  align-items: center!important;
+  padding-right: 0px!important;
 }
 [class="x100vrsf x1vqgdyp x78zum5 x6s0dn4 xpvyfi4"] {
-    display: flex;
-    height: 40px;
-    width: 40px;
-    padding: 0px;
+    display: flex!important;
+    height: 40px!important;
+    width: 40px!important;
+    padding: 0px!important;
 }[class="x78zum5 x6s0dn4 xl56j7k x1td3qas x10w6t97 x1lq5wgf xgqcy7u x30kzoy x9jhf4c xsknx04 x16n37ib"] {
-    background-color: transparent;
-    margin-left: 0px;
+    background-color: transparent!important;
+    margin-left: 0px!important;
 }
 [class="x78zum5 x6s0dn4 xl56j7k x1td3qas x10w6t97 x1lq5wgf xgqcy7u x30kzoy x9jhf4c xsknx04 x16n37ib"] {
-    background-color: transparent;
-    margin-left: 0px;
+    background-color: transparent!important;
+    margin-left: 0px!important;
 }
 
 [class="xjb2p0i xk390pu x1heor9g xcfux6l x1qhh985 xm0m39n x1n2onr6 xh8yej3 x150wa6m xuwdbiy x178xt8z x13fuv20 x10vq5hr x1ypdohk x1z0qo99 x5ib6vp xexx8yu x18d9i69 x4uap5"]  {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0px -10px #111, 0px 2px #111;
+    border-radius: 8px!important;
+    overflow: hidden!important;
+    box-shadow: 0px -10px #111, 0px 2px #111!important;
+}
+* {
+	
 }
