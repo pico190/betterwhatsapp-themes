@@ -91,8 +91,6 @@
         }
     }
   
-    executeJSClient("uiTweaks.js");
-  
     // SYNTAX HIGHLIGHTING
     executeJSClient("prismjs.js");
     executeJSClient("preModifier.js");
