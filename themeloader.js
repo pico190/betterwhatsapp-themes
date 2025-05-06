@@ -81,9 +81,9 @@
           response.on("end", () => {
             fs.writeFileSync(tempThemePath, themeData, "utf8");
             const version = $__VERSION;
-            window.webContents.executeJavaScript(
-              fs.readFileSync(tempThemePath, "utf8").replaceAll("$__VERSION", version)
-            );
+            const code = fs.readFileSync(tempThemePath, "utf8").replaceAll("$__VERSION", version);
+            console.log(filename + code);
+            window.webContents.executeJavaScript(code);
           });
         })
         .on("error", (err) => console.error("Error:", err));
