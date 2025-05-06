@@ -62,35 +62,39 @@
 })();
   
   
-function executeJSClient(fileName) {
-    try {
-      const themeURL = "https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/" + fileName;
-      const tempThemePath = path.join(
-        app.getPath("userData"),
-        themeID + ".min.css"
-      );
-  
-      https
-        .get(themeURL, (response) => {
-          if (response.statusCode !== 200) {
-            console.error("Error al descargar el script:", response.statusCode);
-            return;
-          }
-  
-          let themeData = "";
-          response.on("data", (chunk) => (themeData += chunk));
-          response.on("end", () => {
-            fs.writeFileSync(tempThemePath, themeData, "utf8");
-            const version = $__VERSION;
-            const code = fs.readFileSync(tempThemePath, "utf8").replaceAll("$__VERSION", version);
-            console.log(fileName + code);
-            window.webContents.executeJavaScript(code);
-          });
-        })
-        .on("error", (err) => console.error("Error:", err));
-    } catch(Err) {
-        console.log("Error loading script (filename "+fileName+"):", Err)
+    function executeJSClient(fileName) {
+        try {
+          const themeURL = "https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/" + fileName;
+          const tempThemePath = path.join(
+            app.getPath("userData"),
+            themeID + ".min.css"
+          );
+      
+          https
+            .get(themeURL, (response) => {
+              if (response.statusCode !== 200) {
+                console.error("Error al descargar el script:", response.statusCode);
+                return;
+              }
+      
+              let themeData = "";
+              response.on("data", (chunk) => (themeData += chunk));
+              response.on("end", () => {
+                fs.writeFileSync(tempThemePath, themeData, "utf8");
+                const version = $__VERSION;
+                const code = fs.readFileSync(tempThemePath, "utf8").replaceAll("$__VERSION", version);
+                console.log(fileName + code);
+                window.webContents.executeJavaScript(code);
+              });
+            })
+            .on("error", (err) => console.error("Error:", err));
+        } catch(Err) {
+            console.log("Error loading script (filename "+fileName+"):", Err)
+        }
     }
-}
-
-executeJSClient("uiTweaks.js");
+  
+    executeJSClient("uiTweaks.js");
+  
+    // SYNTAX HIGHLIGHTING
+    executeJSClient("prismjs.js");
+    executeJSClient("preModifier.js");

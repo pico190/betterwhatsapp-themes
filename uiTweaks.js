@@ -209,7 +209,7 @@ function closeModal() {
       }
       const $ayudaTitle = document.querySelector('[title="Ayuda"]');
       $ayudaTitle.parentElement.parentElement.parentElement.querySelector(
-        '[class="x1n2onr6 xyw6214 x78zum5 x1r8uery x1iyjqo2 xdt5ytf x6ikm8r x1odjw0f x1hc1fzr x1tkvqr7 x150wa6m"]',
+        '[class="x1n2onr6 xyw6214 x78zum5 x1r8uery x1iyjqo2 xdt5ytf x6ikm8r x1odjw0f x1hc1fzr x1tkvqr7 x150wa6m"]'
       ).innerHTML += `
               <div id="betterwhatsappmessage" style="display:flex;flex-direction: column;padding:0px 24px;">
                   <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, .2); width: 80%; margin: 12px auto; margin-bottom: 24px;">
