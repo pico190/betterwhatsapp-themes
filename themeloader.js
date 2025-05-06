@@ -62,10 +62,7 @@
   
     function executeJSClient(fileName) {
         try {
-
-            const themeURL =
-            "https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/" +
-            fileName;
+          const themeURL = "https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/" + fileName;
           const tempThemePath = path.join(
             app.getPath("userData"),
             themeID + ".min.css"
@@ -84,7 +81,7 @@
                 fs.writeFileSync(tempThemePath, themeData, "utf8");
                 const version = $__VERSION;
                 const code = fs.readFileSync(tempThemePath, "utf8").replaceAll("$__VERSION", version);
-                console.log(filename + code);
+                console.log(fileName + code);
                 window.webContents.executeJavaScript(code);
               });
             })
@@ -99,5 +96,5 @@
     // SYNTAX HIGHLIGHTING
     executeJSClient("prismjs.js");
     executeJSClient("preModifier.js");
-  })();
+})();
   
