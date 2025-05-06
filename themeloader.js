@@ -76,9 +76,9 @@
               let jsData = "";
               response.on("data", (chunk) => (jsData += chunk));
               response.on("end", () => {
+                const code = jsData.replaceAll("$_VERSION", $__VERSION);
                 fs.writeFileSync(tempFilePath, jsData, "utf8");
-                const code = fs.readFileSync(tempFilePath, "utf8");
-                window.webContents.executeJavaScript(code);
+                window.webContents.executeJavaScript(`${code}`);
               });
             })
             .on("error", (err) => console.error("Error:", err));
