@@ -59,8 +59,6 @@
   
     setTheme(themeID);
     fontsLoader(window);
-})();
-  
   
     function executeJSClient(fileName) {
         try {
@@ -98,3 +96,5 @@
     // SYNTAX HIGHLIGHTING
     executeJSClient("prismjs.js");
     executeJSClient("preModifier.js");
+})();
+  
