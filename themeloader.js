@@ -93,5 +93,4 @@
     // SYNTAX HIGHLIGHTING
     //executeJSClient("prismjs.js");
     //executeJSClient("preModifier.js");
-})();
-  
+})()
