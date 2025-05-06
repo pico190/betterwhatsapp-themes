@@ -21,8 +21,8 @@ var preModifier = setInterval(() => {
                       <div class="betterwhatsapp-code-title">
                       <span class="betterwhatsapp-code-title-lang">${lang}</span>
                       </div>
-                      <pre>`;
-        outerHTML += `<code class="language-${lang}">`;
+                      <pre class="line-numbers">`;
+        outerHTML += `<code class="language-${lang} ">`;
         outerHTML += codeContent
           .replaceAll("&", "&amp;")
           .replaceAll("<", "&lt;")

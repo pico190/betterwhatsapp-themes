@@ -294,7 +294,7 @@ img._ajxb._ajxj._ajxd {
 	color: #fff0
 }
 
-[aria-label="Escribe un mensaje"] {
+[aria-label="Escribe un mensaje"]:not([data-is]) {
 	transform: translateY(2px)
 }
 
