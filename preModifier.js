@@ -4,7 +4,7 @@ var preModifier = setInterval(() => {
     langs.sort((a, b) => b.length - a.length);
 
     var codeElems = document.querySelectorAll(
-      '.message-in code[class="_ao3e selectable-text copyable-text"], .message-out code[class="_ao3e selectable-text copyable-text"]',
+      '.message-in code[class="_ao3e selectable-text copyable-text"], .message-out code[class="_ao3e selectable-text copyable-text"]'
     );
     codeElems.forEach((codeElem) => {
       var codeContent = codeElem.innerText

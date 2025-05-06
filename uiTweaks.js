@@ -1,7 +1,7 @@
 function closeModal() {
     if (document.querySelector(".modal-container")) {
       document.querySelectorAll(".modal-container").forEach((modalContainer) => {
-        modalContainer.reWmove();
+        modalContainer.remove();
       });
     }
   }
@@ -13,7 +13,7 @@ function closeModal() {
     modalContainer.classList.add("modal-container");
     modalContainer.setAttribute(
       "style",
-      `position: absolute;width: 100%;height:100vh;top:0px;left:0px;display:flex;flex-direction:column;align-items:center;justify-content: center;z-index:10000000;backdrop-filter:blur(10px);background-color:rgba(0, 0, 0, .2);z-index:1000`,
+      `position: absolute;width: 100%;height:100vh;top:0px;left:0px;display:flex;flex-direction:column;align-items:center;justify-content: center;z-index:10000000;backdrop-filter:blur(10px);background-color:rgba(0, 0, 0, .2);z-index:1000`
     );
     modalContainer.innerHTML = `<div class="modal" style="padding: 32px; max-height:50%; ${!gradientshadow ? "overflow-x: hidden; overflow-y: scroll;" : ""} width:50%;border-radius: 26px; background-color:#111;position: relative;display:flex;flex-direction:column;border:1px solid rgba(255, 255, 255, .1);">
           ${gradientshadow ? `<div style="background: linear-gradient(to bottom right, #fa6533, #ff2e74);width:100%;height:100%;position:absolute;top:0;left:0;filter:blur(100px);z-index:-1;opacity:0.8;"></div>` : ""}
@@ -105,7 +105,7 @@ function closeModal() {
     }
     setInterval(() => {
       const settings = JSON.parse(
-        localStorage.getItem("betterwhatsapp_settings"),
+        localStorage.getItem("betterwhatsapp_settings")
       );
       Object.keys(settings).forEach((setting) => {
         const value = settings[setting];
@@ -127,7 +127,7 @@ function closeModal() {
   
   setInterval(() => {
     const chatFormat = document.querySelector(
-      '[class="x78zum5 x1op4030 x1y1aw1k x1sxyh0 xwib8y2 xurb0ha xxymvpz x10l6tqk x13vifvy x17qophe xg01cxk xvh3i5d xfh8nwu xoqspk4 x12v9rci x138vmkv x19991ni x1wsgiic x1so62im x1omtkq1"]',
+      '[class="x78zum5 x1op4030 x1y1aw1k x1sxyh0 xwib8y2 xurb0ha xxymvpz x10l6tqk x13vifvy x17qophe xg01cxk xvh3i5d xfh8nwu xoqspk4 x12v9rci x138vmkv x19991ni x1wsgiic x1so62im x1omtkq1"]'
     );
     if (!chatFormat) return;
     const position = chatFormat.style.transform
@@ -151,7 +151,7 @@ function closeModal() {
       return;
     function putPfpOnBg() {
       const pfp = document.querySelector(
-        `#main img[class="x1n2onr6 x1lliihq xh8yej3 x5yr21d x6ikm8r x10wlt62 x14yjl9h xudhj91 x18nykt9 xww2gxu xl1xv1r x115dhu7 x17vty23 x1hc1fzr x4u6w88 x1g40iwv _ao3e"]`,
+        `#main img[class="x1n2onr6 x1lliihq xh8yej3 x5yr21d x6ikm8r x10wlt62 x14yjl9h xudhj91 x18nykt9 xww2gxu xl1xv1r x115dhu7 x17vty23 x1hc1fzr x4u6w88 x1g40iwv _ao3e"]`
       ).src;
       if (!pfp) return;
       document.querySelector("#betterwhatsapp_pfpOnBg")?.remove();
@@ -180,11 +180,11 @@ function closeModal() {
   
     function setAudioPaused() {
       const audioToast = document.querySelector(
-        '[class="x10l6tqk xa1v5g2 xyblb0s x78zum5 xh8yej3 x1x0gksc x1xrx4lg"],[class="x10l6tqk xa1v5g2 xyblb0s x78zum5 xh8yej3 x1x0gksc x1xrx4lg velocity-animating"],[class="x10l6tqk xa1v5g2 x78zum5 xh8yej3 x1x0gksc x1xrx4lg xnj6ddq"], [class="x10l6tqk xa1v5g2 x78zum5 xh8yej3 x1x0gksc x1xrx4lg xnj6ddq velocity-animating"]',
+        '[class="x10l6tqk xa1v5g2 xyblb0s x78zum5 xh8yej3 x1x0gksc x1xrx4lg"],[class="x10l6tqk xa1v5g2 xyblb0s x78zum5 xh8yej3 x1x0gksc x1xrx4lg velocity-animating"],[class="x10l6tqk xa1v5g2 x78zum5 xh8yej3 x1x0gksc x1xrx4lg xnj6ddq"], [class="x10l6tqk xa1v5g2 x78zum5 xh8yej3 x1x0gksc x1xrx4lg xnj6ddq velocity-animating"]'
       );
       if (!audioToast) return;
       const pauseButton = audioToast.querySelector(
-        'button[class="x1n7h9c3 x1s1d1n7 x1orzsq4 xvijh9v x78zum5 xl56j7k x6s0dn4 xh4mkqi x5z6fxw"]',
+        'button[class="x1n7h9c3 x1s1d1n7 x1orzsq4 xvijh9v x78zum5 xl56j7k x6s0dn4 xh4mkqi x5z6fxw"]'
       );
       if (!pauseButton) return;
       const isPlaying = pauseButton.querySelectorAll("svg path").length === 2;
