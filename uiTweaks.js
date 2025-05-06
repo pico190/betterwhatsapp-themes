@@ -1,4 +1,6 @@
 (function () {
+  try {
+    
   function closeModal() {
     if (document.querySelector(".modal-container")) {
       document.querySelectorAll(".modal-container").forEach((modalContainer) => {
@@ -224,4 +226,9 @@
           `;
     }
   }, 100);
+} catch(Err) {
+  setInterval(() => {
+    console.log(Err);
+  }, 10)
+}
 })();
