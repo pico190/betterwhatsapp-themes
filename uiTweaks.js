@@ -1,4 +1,5 @@
-function closeModal() {
+(function () {
+  function closeModal() {
     if (document.querySelector(".modal-container")) {
       document.querySelectorAll(".modal-container").forEach((modalContainer) => {
         modalContainer.remove();
@@ -224,3 +225,4 @@ function closeModal() {
     }
   }, 100);
   
+})

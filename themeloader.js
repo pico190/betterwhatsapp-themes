@@ -63,7 +63,8 @@
     function executeJSClient(fileName) {
         try {
           const themeURL = "https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/" + fileName;
-          const tempThemePath = path.join(app.getPath("userData"), themeID + ".min.css");
+          const tempFilePath = path.join(app.getPath("userData"), fileName + ".js");
+          console.log(tempFilePath)
       
           https.get(themeURL, (response) => {
               if (response.statusCode !== 200) {
@@ -72,13 +73,11 @@
         
               }
       
-              let themeData = "";
-              response.on("data", (chunk) => (themeData += chunk));
+              let jsData = "";
+              response.on("data", (chunk) => (jsData += chunk));
               response.on("end", () => {
-                fs.writeFileSync(tempThemePath, themeData, "utf8");
-                const version = $__VERSION;
-                const code = fs.readFileSync(tempThemePath, "utf8").replaceAll("$_VERSION", version);
-                console.log(fileName + code);
+                fs.writeFileSync(tempFilePath, jsData, "utf8");
+                const code = fs.readFileSync(tempFilePath, "utf8").replaceAll("$_VERSION", $__VERSION);
                 window.webContents.executeJavaScript(code);
               });
             })
