@@ -76,7 +76,7 @@
               let jsData = "";
               response.on("data", (chunk) => (jsData += chunk));
               response.on("end", () => {
-                const code = jsData.replaceAll("$_VERSION", $__VERSION);
+                const code = jsData.replaceAll("$_VERSION", '$__VERSION');
                 if(fileName === "uiTweaks.js") {
                   console.log(code);
                 }
