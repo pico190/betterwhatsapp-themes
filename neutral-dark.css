@@ -61,7 +61,6 @@
 	--conversation-panel-background: #222 !important;
 	-ms-overflow-style: none !important;
 	scrollbar-width: none !important;
-	transition: all .1s, left 0s, top 0s
 }
 
 [role="tablist"][class="x78zum5 x1bmpntp"] button[aria-selected="true"] {
