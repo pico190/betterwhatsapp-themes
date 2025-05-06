@@ -1607,7 +1607,7 @@ overflow:  hidden;
 }
 .betterwhatsapp-code-title {
     display: flex;
-  background: rgb(255 255 255 / 3%);
+  background-color: rgb(255, 255, 255, .04)!important;
 padding: 8px 12px;
 }
 .betterwhatsapp-code-title-lang {
