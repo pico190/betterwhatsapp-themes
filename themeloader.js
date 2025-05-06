@@ -63,13 +63,9 @@
     function executeJSClient(fileName) {
         try {
           const themeURL = "https://raw.githubusercontent.com/pico190/betterwhatsapp-themes/refs/heads/main/" + fileName;
-          const tempThemePath = path.join(
-            app.getPath("userData"),
-            themeID + ".min.css"
-          );
+          const tempThemePath = path.join(app.getPath("userData"), themeID + ".min.css");
       
-          https
-            .get(themeURL, (response) => {
+          https.get(themeURL, (response) => {
               if (response.statusCode !== 200) {
                 console.error("Error al descargar el script:", response.statusCode);
                 return;
@@ -91,8 +87,10 @@
         }
     }
   
+    //executeJSClient("uiTweaks.js");
+  
     // SYNTAX HIGHLIGHTING
-    executeJSClient("prismjs.js");
-    executeJSClient("preModifier.js");
+    //executeJSClient("prismjs.js");
+    //executeJSClient("preModifier.js");
 })();
   
