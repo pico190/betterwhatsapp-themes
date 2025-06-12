@@ -186,7 +186,7 @@
         );
         if (!audioToast) {return;}
         const pauseButton = audioToast.querySelector(
-          'button[class="x1n7h9c3 x1s1d1n7 x1orzsq4 xvijh9v x78zum5 xl56j7k x6s0dn4 xh4mkqi x5z6fxw"]'
+          'button[class="x1n7h9c3 x1s1d1n7 x1orzsq4 xvijh9v x78zum5 xl56j7k x6s0dn4 xh4mkqi x5z6fxw"],button[class="x1n7h9c3 x1s1d1n7 x2459kn xvijh9v x78zum5 xl56j7k x6s0dn4 xh4mkqi x5z6fxw xtnn1bt x9v5kkp xmw7ebm xrdum7p"]'
         );
         if (!pauseButton) {return;}
         const isPlaying = pauseButton.querySelectorAll("svg path").length === 2;
